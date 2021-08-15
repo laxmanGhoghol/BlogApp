@@ -10,9 +10,9 @@
   <link href="{% static 'blog/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" />
   <link rel="stylesheet" href="{% static 'blog/css/base.css'%}" />
   {% if title %}
-    <title>BlogApp - {{title}} </title>
+  <title>BlogApp - {{title}} </title>
   {% else %}
-    <title>BlogApp</title>
+  <title>BlogApp</title>
   {% endif %}
 </head>
 
@@ -20,7 +20,8 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light position-fixed w-100 top-0">
     <div class="container-fluid">
       <a class="navbar-brand fw-bold col-2" href="#">BlogApp</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse col-10" id="navbarSupportedContent">
@@ -33,36 +34,48 @@
             <a class="nav-link active" aria-current="page" href="{% url 'blog-home' %}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'blog-about' %}">About Me</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
+            <a class="nav-link" href="{% url 'profile' %}">Profile</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Write</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Login</a>
+            {% if user.is_authenticated%}
+            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+            {% else %}
+            <a class="nav-link" href="{% url 'login' %}">Login</a>
+            {% endif %}
           </li>
         </ul>
       </div>
     </div>
   </nav>
-  
+
   {% if messages %}
-    {% for msg in messages %}
-      <div class="alert alert-{{msg.tags}}">
-        {{msg}}
-      </div>
-    {% endfor %}
+  {% for msg in messages %}
+  <div class="alert alert-{{msg.tags}}">
+    {{msg}}
+  </div>
+  {% endfor %}
   {%endif%}
-  
+
   {% block content %}
-  
+
   {% endblock content %}
 
-  <footer>
-
+  <footer class="fixed-bottom" style="background-color: #f1f1f1;">
+    <div class="d-flex justify-content-center pt-2">
+      <section class="mb-2 d-flex">
+        <a class="nav-link" href="#">Contact</a>
+        <a class="nav-link" href="{% url 'blog-about' %}">About Me</a>
+        <a class="nav-link" href="https://www.linkedin.com/in/lakhabhai-ghoghol-201015181/">LinkedIn</a>
+        <a class="nav-link" href="https://github.com/laxmanGhoghol">Github</a>
+      </section>
+    </div>
+    <div class="text-center text-dark p-2" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2020 Copyright:
+      <a class="text-dark" href="#">LaxmanGhoghol</a>
+    </div>
   </footer>
   <script src="{% static 'blog/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 </body>

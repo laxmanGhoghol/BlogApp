@@ -32,7 +32,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-FILE_SERVER = os.environ["FileServer"]
 # Application definition
 
 INSTALLED_APPS = [
@@ -125,4 +124,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = "/static/"
+FILE_SERVER = os.environ["FileServer"]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+LOGIN_REDIRECT_URL = 'blog-home'
+LOGIN_URL = 'login'
