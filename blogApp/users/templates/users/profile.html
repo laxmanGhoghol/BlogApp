@@ -1,7 +1,59 @@
 {% extends "blog/base.html" %}
 {% load crispy_forms_tags %}
 {%block content%}
-<div class="container">
-    <h1>{{user.username}}</h1>
+<div class="container mt-3">
+    <div class="row">
+        <div class="col shadow p-3 rounded">
+            <div class="d-flex align-items-center">
+                <img class="profile-img" src="{{user.profile.image.url}}" alt="" srcset="">
+                <div class="ms-5">
+                    <h1>{{user.username}}</h1>
+                    <small class="text-secondary">{{user.email}}</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-3 d-none d-lg-block">
+            <div class="container">
+                <h3 class="text-center">Categories</h3>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><a href="#">Databases</a></li>
+                    <li class="list-group-item"><a href="#">Programming</a></li>
+                    <li class="list-group-item"><a href="#">Java</a></li>
+                    <li class="list-group-item"><a href="#">Python</a></li>
+                    <li class="list-group-item"><a href="#">Machine Learning</a></li>
+                    <li class="list-group-item"><a href="#">Neural Networks</a></li>
+
+                </ul>
+            </div>
+            <div class="container ads-container mt-5">
+                <img class="img-fluid" src="{{IMAGES_URL}}rightImg.png" alt="">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 col-lg-9">
+        <div class="container">
+            <div class="row">
+
+                {%for post in posts%}
+
+                <div class="post-container col-lg-6 shadow p-3 mb-5 mt-2 bg-white rounded">
+                    <div class="post-top">
+                        <h6 class="text-black-50 text-center">By <b class="text-primary">{{post.author}}</b> on {{
+                            post.date_posted }} </h6>
+                        <img src="{{IMAGES_URL}}1628667838737forestViewFullHD.jpg" class="post-img" alt="">
+                    </div>
+                    <div class="post-middle">
+                        <h2 class="text-center text-capitalize ">{{post.title}}</h2>
+                        <p class="text-truncate"> {{post.content}} </p>
+                    </div>
+                </div>
+
+                {%endfor%}
+
+            </div>
+        </div>
+    </div>
 </div>
+
 {%endblock content%}
