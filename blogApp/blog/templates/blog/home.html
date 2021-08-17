@@ -7,20 +7,24 @@
       <div class="container">
         <div class="row">
 
-        {%for post in posts%}
+          {%for post in posts%}
 
           <div class="post-container col-lg-6 shadow p-3 mb-5 mt-2 bg-white rounded">
-            <div class="post-top">
-              <h6 class="text-black-50 text-center">By <b class="text-primary">{{post.author}}</b> on {{ post.date_posted }} </h6>
-              <img src="{{IMAGES_URL}}1628667838737forestViewFullHD.jpg" class="post-img" alt="">
+            <div class="post-top d-flex align-items-center">
+              <img class="post-author-img" src="{{post.author.profile.image.url}}" alt="">
+              <div class="d-flex align-items-center">
+                <h5 class="ms-3 text-primary text-bolder">{{user.username}}</h5>
+                <h6 class="ms-3 text-muted">{{ post.date_posted|date:"M, Y" }}</h6>
+              </div>
             </div>
             <div class="post-middle">
+              <img src="" class="post-img" alt="">
               <h2 class="text-center text-capitalize ">{{post.title}}</h2>
               <p class="text-truncate"> {{post.content}} </p>
             </div>
-          </div> 
+          </div>
 
-        {%endfor%}
+          {%endfor%}
 
         </div>
       </div>

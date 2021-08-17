@@ -12,6 +12,12 @@ a{
 .post-container{
     cursor: pointer;
 }
+.post-author-img{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
 .profile-img{
     width: 100px;
     height: 100px;
