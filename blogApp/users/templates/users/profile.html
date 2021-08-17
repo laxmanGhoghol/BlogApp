@@ -11,6 +11,19 @@
                     <small class="text-secondary">{{user.email}}</small>
                 </div>
             </div>
+            <div class="mt-5">
+                <form action="" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <fieldset class="form-group">
+                        <legend class="border-bottom mb-5 ">Profile Info </legend>
+                        {{u_form | crispy}}
+                        {{p_form | crispy}}
+                    </fieldset>
+                    <div class="form-group mt-5">
+                        <button class="btn btn-primary" type="submit">Update</button>
+                    </div>
+                </form>
+            </div>
         </div>
         <div class="col-3 d-none d-lg-block">
             <div class="container">
@@ -30,6 +43,7 @@
             </div>
         </div>
     </div>
+
 
     <div class="col-12 col-lg-9">
         <div class="container">
