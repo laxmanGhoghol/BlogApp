@@ -1,0 +1,54 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+
+<section class="container-fluid">
+    <div class="row">
+        <div class="col-12 col-lg-9">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="post-container shadow p-3 mb-5 mt-2 bg-white rounded">
+                        <div class="post-top d-flex align-items-center">
+                            <img class="post-author-img" src="{{post.author.profile.image.url}}" alt="">
+                            <div class="d-flex align-items-center justify-content-between w-100">
+                                <h5 class="ms-3 text-primary text-bolder">{{post.author.username}}</h5>
+                                <h6 class="ms-3 text-muted">{{ post.date_posted|date:"M, Y" }}</h6>
+                            </div>
+                        </div>
+                        {% if post.author == user %}
+                        <div class="ms-5">
+                            <a href="{% url 'post-update' post.id %}"
+                                class="btn btn-secondary btn-sm mt-1 mb-1">Update</a>
+                            <a href="{% url 'post-delete' post.id %}" class="btn btn-danger btn-sm mt-1 mb-1">Delete</a>
+                        </div>
+                        {% endif %}
+                        <div class="post-middle">
+                            <img src="" class="post-img" alt="">
+                            <h2 class="text-center text-capitalize">{{post.title}}</h2>
+                            <p class="mt-5" style="text-align: justify;text-indent: 50px;">{{post.content}} </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-3 d-none d-lg-block">
+            <div class="container">
+                <h3 class="text-center">Categories</h3>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><a href="#">Databases</a></li>
+                    <li class="list-group-item"><a href="#">Programming</a></li>
+                    <li class="list-group-item"><a href="#">Java</a></li>
+                    <li class="list-group-item"><a href="#">Python</a></li>
+                    <li class="list-group-item"><a href="#">Machine Learning</a></li>
+                    <li class="list-group-item"><a href="#">Neural Networks</a></li>
+
+                </ul>
+            </div>
+            <div class="container ads-container mt-5">
+                <img class="img-fluid" src="{{IMAGES_URL}}rightImg.png" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

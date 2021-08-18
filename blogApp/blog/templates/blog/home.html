@@ -10,16 +10,16 @@
           {%for post in posts%}
 
           <div class="post-container col-lg-6 shadow p-3 mb-5 mt-2 bg-white rounded">
-            <div class="post-top d-flex align-items-center">
+            <div class="d-flex align-items-center">
               <img class="post-author-img" src="{{post.author.profile.image.url}}" alt="">
-              <div class="d-flex align-items-center">
-                <h5 class="ms-3 text-primary text-bolder">{{user.username}}</h5>
+              <div class="d-flex align-items-center justify-content-between w-100">
+                <h5 class="ms-3 text-primary text-bolder">{{post.author.username}}</h5>
                 <h6 class="ms-3 text-muted">{{ post.date_posted|date:"M, Y" }}</h6>
               </div>
             </div>
             <div class="post-middle">
               <img src="" class="post-img" alt="">
-              <h2 class="text-center text-capitalize ">{{post.title}}</h2>
+              <h2 class="text-center text-capitalize "><a href="{% url 'post-detail' post.id %}">{{post.title}}</a></h2>
               <p class="text-truncate"> {{post.content}} </p>
             </div>
           </div>
