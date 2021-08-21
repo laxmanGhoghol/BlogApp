@@ -65,3 +65,14 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
             return True
         return False
 
+#search view for posts
+class PostSearchView(LoginRequiredMixin, ListView):
+    model = Post
+    template_name = 'blog/searchView.html'
+    context_object_name = 'posts'
+    ordering = ['-date_posted']
+    paginate_by = 10
+
+    def get_queryset(self):
+        qs = Post.objects.filter(title__icontains = self.request.GET.get('searchKey'))
+        return qs
